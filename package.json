@@ -1,0 +1,52 @@
+{
+  "name": "gendiffbymip",
+  "version": "1.0.2",
+  "description": "Compares two configuration files and shows difference.",
+  "author": "MiP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tutburatino/frontend-project-lvl2.git-/issues"
+  },
+  "homepage": "https://github.com/tutburatino/frontend-project-lvl2-#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tutburatino/frontend-project-lvl2-.git"
+  },
+  "keywords": [
+    "CLI",
+    "Configuration",
+    "Files"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest --colors",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jest": "^22.1.3",
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.0.0"
+  }
+}
