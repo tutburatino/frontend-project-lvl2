@@ -1,7 +1,7 @@
 {
   "name": "gendiffbymip",
   "version": "1.0.2",
-  "description": "Compares two configuration files and shows difference.",
+  "description": "Compares two configuration files and shows differences.",
   "author": "MiP",
   "license": "MIT",
   "bugs": {
