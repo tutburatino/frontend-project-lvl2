@@ -1,9 +1,10 @@
-install: install-deps
+update:
+	make install
 
 run:
 	npx babel-node
 
-install-deps:
+install:
 	npm install
 
 build:
@@ -18,3 +19,8 @@ lint:
 
 publish:
 	npm publish --dry-run
+
+link:
+	rm -rf dist
+	npm publish --dry-run
+	npm link
