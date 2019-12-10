@@ -7,3 +7,19 @@ Difference generator is a CLI utility compares two configuration files.
 **Capabillities:**
   - use multiple formats
   - generate reports in different formats: text, pretty, json
+
+Example:
+```
+$ gendiff --format plain first-config.ini second-config.ini
+Setting "common.setting2" deleted.
+Setting "common.setting4" added with value "blah blah".
+Setting "group1.baz" changed from "bas" to "bars".
+Section "group2" deleted.
+```
+
+
+### Installation
+
+```
+$ npm install -g gendif
+```
