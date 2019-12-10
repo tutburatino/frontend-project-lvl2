@@ -6,4 +6,4 @@ Difference generator is a CLI utility compares two configuration files.
 
 **Capabillities:**
   - use multiple formats
-  - generate 
+  - generate reports in different formats: text, pretty, json
