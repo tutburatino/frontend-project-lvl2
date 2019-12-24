@@ -12,6 +12,7 @@ build:
 	npm run build
 
 test:
+	make link
 	npm test
 
 lint:
