@@ -23,3 +23,5 @@ Section "group2" deleted.
 ```
 $ npm install -g gendif
 ```
+
+[![asciicast](https://asciinema.org/a/297132.svg)](https://asciinema.org/a/297132)
