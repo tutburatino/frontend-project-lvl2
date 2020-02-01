@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import generator from '..';
+import commander from '../commander';
 
-generator(process.argv);
+commander(process.argv);
