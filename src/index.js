@@ -1,10 +1,10 @@
 // eslint-disable-next-line lodash-fp/use-fp
 import { has, union, keys } from 'lodash';
-import fs from 'fs';
 import Aded from './lib/statuses/Added';
 import Modified from './lib/statuses/Modified';
 import Removed from './lib/statuses/Removed';
 import Intact from './lib/statuses/Intact';
+import parse from './parsers';
 
 
 const defineChange = (key, objBefore, objAfter) => {
@@ -26,10 +26,7 @@ const genDifference = (obj1, obj2) => union(keys({ ...obj1, ...obj2 }))
   ), [])
   .join('\n');
 
-const extractObj = (path) => {
-  const string = fs.readFileSync(path, 'utf-8');
-  return JSON.parse(string);
-};
+const extractObj = path => parse(path);
 
 const convertToAbsolute = path => union(process.env.PWD.split('/'), path.split('/')).join('/');
 

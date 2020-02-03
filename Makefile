@@ -12,7 +12,6 @@ build:
 	npm run build
 
 test:
-	make build
 	npm test
 
 lint:
