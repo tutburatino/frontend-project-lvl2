@@ -1,7 +1,7 @@
 {
   "name": "gendifff",
-  "version": "1.0.1",
-  "description": "Compares two configuration files and shows differences. Avaliable: JSON, YAML.",
+  "version": "1.0.2",
+  "description": "Compares two configuration files and shows differences. Avaliable: JSON, YAML, INI.",
   "author": "MiP",
   "license": "MIT",
   "bugs": {
@@ -35,6 +35,7 @@
   "dependencies": {
     "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
     "commander": "^2.20.0",
+    "ini": "^1.3.5",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
     "source-map-support": "^0.5.10"
