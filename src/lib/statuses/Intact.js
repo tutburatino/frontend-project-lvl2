@@ -1,10 +1,12 @@
+import stringify from '../../stringify';
+
 export default class Intact {
   constructor(name, obj) {
     this.name = name;
     this.value = obj[name];
   }
 
-  toString() {
-    return `    ${this.name}: ${this.value}`;
+  toString(depth) {
+    return `${'  '.repeat(depth)}    ${this.name}: ${stringify(this.value, depth)}`;
   }
 }

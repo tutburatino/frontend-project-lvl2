@@ -1,3 +1,5 @@
+import stringify from '../../stringify';
+
 export default class Modified {
   constructor(name, before, after) {
     this.name = name;
@@ -5,8 +7,8 @@ export default class Modified {
     this.after = after[name];
   }
 
-  toString() {
-    return `  + ${this.name}: ${this.after}`
-       + `\n  - ${this.name}: ${this.before}`;
+  toString(depth) {
+    return `${'  '.repeat(depth)}  + ${this.name}: ${stringify(this.after, depth)}`
+       + `\n${'  '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth)}`;
   }
 }
