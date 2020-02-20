@@ -8,6 +8,6 @@ export default class Added {
   }
 
   toString(depth) {
-    return `${'  '.repeat(depth)}  + ${this.name}: ${stringify(this.value, depth)}`;
+    return `${'    '.repeat(depth)}  + ${this.name}: ${stringify(this.value, depth + 1)}`;
   }
 }

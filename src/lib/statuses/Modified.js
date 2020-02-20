@@ -8,7 +8,6 @@ export default class Modified {
   }
 
   toString(depth) {
-    return `${'  '.repeat(depth)}  + ${this.name}: ${stringify(this.after, depth)}`
-       + `\n${'  '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth)}`;
+    return `${'    '.repeat(depth)}  + ${this.name}: ${stringify(this.after, depth + 1)}\n${'    '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth + 1)}`;
   }
 }

@@ -7,6 +7,6 @@ export default class Removed {
   }
 
   toString(depth) {
-    return `${'  '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth)}`;
+    return `${'    '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth + 1)}`;
   }
 }
