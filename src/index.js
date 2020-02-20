@@ -39,7 +39,7 @@ const extractObj = path => parse(path);
 
 const convertToAbsolute = path => union(process.env.PWD.split('/'), path.split('/')).join('/');
 
-export const genDiff = (path1, path2) => {
+export default (path1, path2) => {
   const obj1 = extractObj(convertToAbsolute(path1));
   const obj2 = extractObj(convertToAbsolute(path2));
 
