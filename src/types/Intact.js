@@ -1,8 +1,8 @@
 // eslint-disable-next-line lodash-fp/use-fp
 import _ from 'lodash';
-import stringify from '../../stringify';
+import stringify from '../stringify';
 // eslint-disable-next-line import/no-cycle
-import { genDifference, render } from '../..';
+import { genDifference, renderTree, renderPlain } from '..';
 
 export default class Intact {
   constructor(name, beforeObj, afterObj) {
@@ -18,6 +18,13 @@ export default class Intact {
     if (this.children === undefined) {
       return `${'    '.repeat(depth)}    ${this.name}: ${stringify(this.value, depth + 1)}`;
     }
-    return `${'    '.repeat(depth)}    ${this.name}: ${render(this.children, depth + 1)}`;
+    return `${'    '.repeat(depth)}    ${this.name}: ${renderTree(this.children, depth + 1)}`;
+  }
+
+  toPlainString(parents) {
+    if (this.children === undefined) {
+      return false;
+    }
+    return `${renderPlain(this.children, [...parents, this.name])}`;
   }
 }

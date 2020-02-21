@@ -1,4 +1,4 @@
-import stringify from '../../stringify';
+import stringify from '../stringify';
 
 export default class Removed {
   constructor(name, before) {
@@ -8,5 +8,9 @@ export default class Removed {
 
   toString(depth) {
     return `${'    '.repeat(depth)}  - ${this.name}: ${stringify(this.before, depth + 1)}`;
+  }
+
+  toPlainString(parents) {
+    return `Property '${[...parents, this.name].join('.')}' was removed`;
   }
 }

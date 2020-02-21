@@ -57,3 +57,14 @@ test('Compare 2 JSON tree files and in 2 variants of sequence.\
   const actual = genDiff(jsonTree1path, jsonTree2path);
   expect(actual).toBe(result4Trees);
 });
+
+// eslint-disable-next-line no-multi-str
+test('Plain format. Compare 2 JSON tree files and in 2 variants of sequence.\
+    \nPaths are absolutely. Should return the difference.', () => {
+  const jsonTree1path = `${__dirname}/__tests__/__fixtures__/beforeTree.json`;
+  const jsonTree2path = `${__dirname}/__tests__/__fixtures__/afterTree.json`;
+  const plainResult4Trees = fs.readFileSync('__tests__/__fixtures__/plainResult4Trees.txt', 'utf-8');
+
+  const actual = genDiff(jsonTree1path, jsonTree2path, 'plain');
+  expect(actual).toBe(plainResult4Trees);
+});
