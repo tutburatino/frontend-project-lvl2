@@ -3,7 +3,7 @@ import _ from 'lodash';
 import stringify from '../stringify';
 // eslint-disable-next-line import/no-cycle
 import {
-  genDifference, renderTree, renderPlain, getTree,
+  genDifference, renderTree, renderPlain,
 } from '..';
 
 export default class Intact {
@@ -29,20 +29,5 @@ export default class Intact {
       return 'Intact';
     }
     return `${renderPlain(this.children, [...parents, this.name])}`;
-  }
-
-  genTree() {
-    if (this.children === undefined) {
-      return {
-        name: this.name,
-        type: 'Intact',
-        value: this.value,
-      };
-    }
-    return {
-      name: this.name,
-      type: 'Intact',
-      children: getTree(this.children),
-    };
   }
 }

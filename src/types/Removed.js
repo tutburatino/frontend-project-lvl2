@@ -14,12 +14,4 @@ export default class Removed {
   toPlainString(parents) {
     return `Property '${[...parents, this.name].join('.')}' was removed`;
   }
-
-  genTree() {
-    return {
-      name: this.name,
-      type: 'Removed',
-      value: this.value,
-    };
-  }
 }

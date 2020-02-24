@@ -19,13 +19,4 @@ export default class Modified {
     const newValue = _.isObject(this.newValue) ? '[complex value]' : this.newValue;
     return `Property '${[...parents, this.name].join('.')}' was updated. From ${oldValue} to ${newValue}`;
   }
-
-  genTree() {
-    return {
-      name: this.name,
-      type: 'Modified',
-      oldValue: this.oldValue,
-      newValue: this.newValue,
-    };
-  }
 }

@@ -18,12 +18,4 @@ export default class Added {
     const value = _.isObject(this.value) ? '[complex value]' : this.value;
     return `Property '${[...parents, this.name].join('.')}' was added with value: ${value}`;
   }
-
-  genTree() {
-    return {
-      name: this.name,
-      type: 'Added',
-      value: this.value,
-    };
-  }
 }
