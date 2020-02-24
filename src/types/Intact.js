@@ -2,11 +2,14 @@
 import _ from 'lodash';
 import stringify from '../stringify';
 // eslint-disable-next-line import/no-cycle
-import { genDifference, renderTree, renderPlain } from '..';
+import {
+  genDifference, renderTree, renderPlain, getTree,
+} from '..';
 
 export default class Intact {
   constructor(name, beforeObj, afterObj) {
     this.name = name;
+    this.type = 'Intact';
     if (_.isEqual(beforeObj[name], afterObj[name])) {
       this.value = beforeObj[name];
     } else {
@@ -23,8 +26,23 @@ export default class Intact {
 
   toPlainString(parents) {
     if (this.children === undefined) {
-      return false;
+      return 'Intact';
     }
     return `${renderPlain(this.children, [...parents, this.name])}`;
+  }
+
+  genTree() {
+    if (this.children === undefined) {
+      return {
+        name: this.name,
+        type: 'Intact',
+        value: this.value,
+      };
+    }
+    return {
+      name: this.name,
+      type: 'Intact',
+      children: getTree(this.children),
+    };
   }
 }

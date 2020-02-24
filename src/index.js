@@ -38,20 +38,27 @@ export const renderTree = (diff, depth = 0) => {
 export const renderPlain = (diff, parents = []) => {
   const items = diff.map(
     item => item.toPlainString(parents),
-  ).filter(i => i);
+  ).filter(i => i !== 'Intact');
   return items.join('\n');
 };
 
-const render = (difference, format = 'tree') => (format === 'plain' ? renderPlain(difference) : renderTree(difference));
+const render = (difference, format) => {
+  const formatters = {
+    tree: diff => renderTree(diff),
+    plain: diff => renderPlain(diff),
+    json: diff => JSON.stringify(diff),
+  };
+  return formatters[format](difference);
+};
 
 const extractObj = path => parse(path);
 
 const convertToAbsolute = path => union(process.env.PWD.split('/'), path.split('/')).join('/');
 
-export default (path1, path2, format) => {
+export default (path1, path2, format = 'tree') => {
   const obj1 = extractObj(convertToAbsolute(path1));
   const obj2 = extractObj(convertToAbsolute(path2));
 
   const difference = genDifference(obj1, obj2);
-  return render(difference, format);
+  return render(difference, format.toLowerCase());
 };

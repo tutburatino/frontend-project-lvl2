@@ -6,6 +6,7 @@ import stringify from '../stringify';
 export default class Added {
   constructor(name, obj) {
     this.name = name;
+    this.type = 'Added';
     this.value = obj[name];
   }
 
@@ -16,5 +17,13 @@ export default class Added {
   toPlainString(parents) {
     const value = _.isObject(this.value) ? '[complex value]' : this.value;
     return `Property '${[...parents, this.name].join('.')}' was added with value: ${value}`;
+  }
+
+  genTree() {
+    return {
+      name: this.name,
+      type: 'Added',
+      value: this.value,
+    };
   }
 }
