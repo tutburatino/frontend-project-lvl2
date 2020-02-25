@@ -21,7 +21,59 @@ Section "group2" deleted.
 ### Installation
 
 ```
-$ npm install -g gendif
+$ npm install -g gendifff
 ```
 
-[![asciicast](https://asciinema.org/a/297132.svg)](https://asciinema.org/a/297132)
+<script id="asciicast-304587" src="https://asciinema.org/a/304587.js" async></script>
+
+
+### Compare JSON files
+
+```
+$ gendiff config1.json config2.json
+```
+
+<script id="asciicast-304592" src="https://asciinema.org/a/304592.js" async></script>
+
+
+### Compare YAML/YML files
+
+```
+$ gendiff config1.yaml config2.yaml
+```
+
+<script id="asciicast-304597" src="https://asciinema.org/a/304597.js" async></script>
+
+### Compare INI files
+
+```
+$ gendiff config1.yaml config2.yaml
+```
+
+<script id="asciicast-304597" src="https://asciinema.org/a/304597.js" async></script>
+
+### Compare nested files
+
+```
+$ gendiff configTree1 configTree2
+```
+
+<script id="asciicast-304609" src="https://asciinema.org/a/304609.js" async></script>
+
+
+### Compare files in plain format
+
+```
+$ gendiff --format plain config1 config2
+```
+
+<script id="asciicast-304618" src="https://asciinema.org/a/304618.js" async></script>
+
+
+### Compare files in json format
+
+```
+$ gendiff --format json config1 config2
+```
+
+<script id="asciicast-304620" src="https://asciinema.org/a/304620.js" async></script>
