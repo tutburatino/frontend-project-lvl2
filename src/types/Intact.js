@@ -1,16 +1,14 @@
-// eslint-disable-next-line lodash-fp/use-fp
-import _ from 'lodash';
+import { isEqual } from 'lodash/fp';
 import stringify from '../stringify';
 // eslint-disable-next-line import/no-cycle
-import {
-  genDifference, renderTree, renderPlain,
-} from '..';
+import { genDifference } from '..';
+import { renderTree, renderPlain } from '../formatters';
 
 export default class Intact {
   constructor(name, beforeObj, afterObj) {
     this.name = name;
     this.type = 'Intact';
-    if (_.isEqual(beforeObj[name], afterObj[name])) {
+    if (isEqual(beforeObj[name], afterObj[name])) {
       this.value = beforeObj[name];
     } else {
       this.children = genDifference(beforeObj[name], afterObj[name]);

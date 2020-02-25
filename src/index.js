@@ -1,64 +1,29 @@
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line lodash-fp/use-fp
-import {
-  has, union, keys, isObject, isEqual,
-} from 'lodash';
-import Aded from './types/Added';
-import Modified from './types/Modified';
-import Removed from './types/Removed';
-// eslint-disable-next-line import/no-cycle
-import Intact from './types/Intact';
+import _ from 'lodash';
+import defineType from './types/defineType';
 import parse from './parsers';
+import formatters from './formatters';
 
 
-const defineType = (key, objBefore, objAfter) => {
-  const oldValue = objBefore[key];
-  const value = objAfter[key];
-  if (!has(objBefore, key)) {
-    return new Aded(key, objAfter);
-  }
-  if (!has(objAfter, key)) {
-    return new Removed(key, objBefore);
-  }
-  if (isEqual(oldValue, value) || (isObject(value) && isObject(oldValue))) {
-    return new Intact(key, objBefore, objAfter);
-  }
-  return new Modified(key, objBefore, objAfter);
-};
-
-export const genDifference = (obj1, obj2) => union(keys({ ...obj1, ...obj2 }))
+export const genDifference = (obj1, obj2) => _.union(_.keys({ ...obj1, ...obj2 }))
   .map(key => defineType(key, obj1, obj2));
-
-export const renderTree = (diff, depth = 0) => {
-  const items = diff.map(
-    item => `${item.toString(depth)}`,
-  );
-  return `{\n${items.join('\n')}\n${'    '.repeat(depth)}}`;
-};
-
-export const renderPlain = (diff, parents = []) => {
-  const items = diff.map(
-    item => item.toPlainString(parents),
-  ).filter(i => i !== 'Intact');
-  return items.join('\n');
-};
-
-const render = (difference, format) => {
-  const formatters = {
-    tree: diff => renderTree(diff),
-    plain: diff => renderPlain(diff),
-    json: diff => JSON.stringify(diff),
-  };
-  return formatters[format](difference);
-};
 
 const extractObj = path => parse(path);
 
-const convertToAbsolute = path => union(process.env.PWD.split('/'), path.split('/')).join('/');
+const toAbsolute = path => _.union(process.env.PWD.split('/'), path.split('/')).join('/');
+
+const render = (difference, format) => formatters[format](difference);
 
 export default (path1, path2, format = 'tree') => {
-  const obj1 = extractObj(convertToAbsolute(path1));
-  const obj2 = extractObj(convertToAbsolute(path2));
+  const absolutePathToFile1 = toAbsolute(path1);
+  const absolutePathToFile2 = toAbsolute(path2);
+
+  const obj1 = extractObj(absolutePathToFile1);
+  const obj2 = extractObj(absolutePathToFile2);
 
   const difference = genDifference(obj1, obj2);
-  return render(difference, format.toLowerCase());
+  const normalizedFormat = format.toLowerCase();
+
+  return render(difference, normalizedFormat);
 };

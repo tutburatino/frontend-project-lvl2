@@ -10,10 +10,9 @@ const parsers = {
   ini: data => ini.parse(data),
 };
 
-export default (pathToFile) => {
-  const data = fs.readFileSync(pathToFile, 'utf-8');
-  const extension = path.extname(pathToFile).slice(1);
+export default (absolutePathToFile) => {
+  const data = fs.readFileSync(absolutePathToFile, 'utf-8');
+  const extension = path.extname(absolutePathToFile).slice(1);
   const parser = parsers[extension];
-  const result = parser(data);
-  return result;
+  return parser(data);
 };
