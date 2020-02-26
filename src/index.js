@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line lodash-fp/use-fp
 import _ from 'lodash';
+import path from 'path';
 import defineType from './types/defineType';
 import parse from './parsers';
 import formatters from './formatters';
@@ -9,9 +10,14 @@ import formatters from './formatters';
 export const genDifference = (obj1, obj2) => _.union(_.keys({ ...obj1, ...obj2 }))
   .map(key => defineType(key, obj1, obj2));
 
-const extractObj = path => parse(path);
+const extractObj = pathToFile => parse(pathToFile);
 
-const toAbsolute = path => _.union(process.env.PWD.split('/'), path.split('/')).join('/');
+const toAbsolute = (pathToFile) => {
+  if (path.isAbsolute(pathToFile)) {
+    return pathToFile;
+  }
+  return path.join(process.env.PWD, pathToFile);
+};
 
 const render = (difference, format) => formatters[format](difference);
 
