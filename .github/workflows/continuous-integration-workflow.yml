@@ -3,12 +3,12 @@ name: Node.js CI
 on:
   push:
     branches:
-    - master
+    - test
 
 jobs:
   testing:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
@@ -20,9 +20,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: ls -al
-    - run: npm install
-    - run: npm test
-    - run: npm lint
+    - run: ls -al ./__tests__/__fixtures__/
+    - run: make install
+    - run: make lint
+    - run: make test
       env:
         CI: true
