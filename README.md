@@ -1,6 +1,6 @@
 # Difference generator
 
-![](https://github.com/tutburatino/frontend-project-lvl2/workflows/Node.js%20CI/badge.svg)
+[![](https://github.com/tutburatino/frontend-project-lvl2/workflows/Node.js%20CI/badge.svg)](https://github.com/tutburatino/frontend-project-lvl2/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/bb58df4ceda72cf38e59/maintainability)](https://codeclimate.com/github/tutburatino/frontend-project-lvl2/maintainability) [![Build Status](https://travis-ci.org/tutburatino/frontend-project-lvl2.svg?branch=master)](https://travis-ci.org/tutburatino/frontend-project-lvl2)
 
