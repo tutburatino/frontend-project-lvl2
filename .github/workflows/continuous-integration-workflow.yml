@@ -6,7 +6,7 @@ on:
     - test
 
 jobs:
-  testing:
+  test:
 
     runs-on: macos-latest
 
@@ -25,3 +25,20 @@ jobs:
     - run: make test
       env:
         CI: true
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '12'
+    - run: npm install -g yarn
+    - run: yarn install
+    - run: yarn build
+    - uses: paambaati/codeclimate-action@v2.5.2
+      env:
+        CC_TEST_REPORTER_ID: 65767f31bba92a1d75199a1fc4d5f8fbfaddbf6a0e342b0a9dbe5875f12339f9
+      with:
+        coverageCommand: yarn coverage
