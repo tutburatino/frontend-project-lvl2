@@ -4,10 +4,10 @@ import path from 'path';
 import ini from 'ini';
 
 const parsers = {
-  yml: data => yaml.safeLoad(data),
-  json: data => JSON.parse(data),
-  yaml: data => yaml.safeLoad(data),
-  ini: data => ini.parse(data),
+  yml: yaml.safeLoad,
+  json: JSON.parse,
+  yaml: yaml.safeLoad,
+  ini: ini.parse,
 };
 
 export default (absolutePathToFile) => {
