@@ -1,11 +1,10 @@
-update:
-	make install
+install: install-deps
+
+install-deps:
+	npm ci
 
 run:
-	npx babel-node
-
-install:
-	npm install
+	npx babel-node 'src/bin/gendiff.js' --format plain __tests__/__fixtures__/beforeTree.json __tests__/__fixtures__/afterTree.json
 
 build:
 	rm -rf dist
@@ -14,13 +13,18 @@ build:
 test:
 	npm test
 
+test-coverage:
+	npm test -- --coverage
+
 lint:
 	npx eslint .
 
 publish:
-	npm publish --dry-run
+	npm publish
 
 link:
 	rm -rf dist
 	npm publish --dry-run
 	npm link
+
+.PHONY: test

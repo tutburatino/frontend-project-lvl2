@@ -1,0 +1,44 @@
+name: Node.js CI
+
+on:
+  - push
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [13.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: npm install, build
+      run: |
+          make install
+          make build
+        env:
+          CI: true
+
+    - name: Run linter
+        run: |
+          make lint
+
+    - name: Test by Jest
+        run: |
+          make test
+
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.4.0
+      env:
+        CC_TEST_REPORTER_ID: 65767f31bba92a1d75199a1fc4d5f8fbfaddbf6a0e342b0a9dbe5875f12339f9
+      with:
+        coverageCommand: make test-coverage
+        debug: true
