@@ -35,6 +35,10 @@ jobs:
       run: |
         make test
 
+    - name: Compare 2 JSON files
+      run: |
+        make run
+
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.4.0
       env:
