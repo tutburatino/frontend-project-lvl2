@@ -28,12 +28,12 @@ jobs:
         CI: true
 
     - name: Run linter
-        run: |
-          make lint
+      run: |
+        make lint
 
     - name: Test by Jest
-        run: |
-          make test
+      run: |
+        make test
 
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.4.0
