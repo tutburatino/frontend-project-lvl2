@@ -4,7 +4,7 @@ install-deps:
 	npm ci
 
 run:
-	npx babel-node 'src/bin/gendiff.js' --format plain __tests__/__fixtures__/beforeTree.json __tests__/__fixtures__/afterTree.json
+	npx babel-node 'src/bin/gendiff.js' --format plain __tests__/__fixtures__/index/json1.json __tests__/__fixtures__/index/json2.json
 
 build:
 	rm -rf dist
