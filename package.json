@@ -30,7 +30,8 @@
     "prepublishOnly": "npm run build"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testMatch": [ "**/?(*.)+(spec|test).[jt]s?(x)" ]
   },
   "dependencies": {
     "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
