@@ -8,7 +8,7 @@ const renderTree = (difference, depth = 0) => {
   const items = difference.map(({
     name, type, value, oldValue, children,
   }) => {
-    if (type === 'origin') {
+    if (type === 'unchanged') {
       return `${indent}    ${name}: ${stringify(value, depth + 1)}`;
     }
     if (type === 'added') {
@@ -17,7 +17,7 @@ const renderTree = (difference, depth = 0) => {
     if (type === 'deleted') {
       return `${indent}  - ${name}: ${stringify(oldValue, depth + 1)}`;
     }
-    if (type === 'modified') {
+    if (type === 'changed') {
       return `${indent}  + ${name}: ${stringify(value, depth + 1)}\n`
            + `${indent}  - ${name}: ${stringify(oldValue, depth + 1)}`;
     }
@@ -43,7 +43,7 @@ const renderPlain = (difference, parents = []) => {
     if (type === 'parent') {
       return `${renderPlain(children, [...parents, name])}`;
     }
-    if (type === 'modified') {
+    if (type === 'changed') {
       return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(value)}`;
     }
 
