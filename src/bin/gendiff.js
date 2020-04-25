@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import commander from '../commander';
+import command from '../commander';
 
-commander(process.argv);
+command(process.argv);
