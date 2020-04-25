@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 
 const compare = (obj1, obj2) => {
-  const keys = _.union(_.keys({ ...obj1, ...obj2 }));
+  const keys = _.union(_.keys(obj1), _.keys(obj2));
 
   const difference = keys.map((name) => {
     const oldValue = obj1[name];
