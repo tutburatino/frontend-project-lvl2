@@ -13,9 +13,9 @@ test.each([
   ['json1.json', 'json2.json', 'format-plain.txt', 'plain'],
   ['json1.json', 'json2.json', 'format-json.json', 'json'],
   ['yaml1.yml', 'yaml2.yml', 'result.txt', 'tree'],
-])('genDiff(%s, %s, %s, %s)', (file1, file2, result, format) => {
-  const path1 = getFixturePath(file1);
-  const path2 = getFixturePath(file2);
+])('genDiff(%s, %s, %s, %s)', (filename1, filename2, result, format) => {
+  const path1 = getFixturePath(filename1);
+  const path2 = getFixturePath(filename2);
   const expected = readFile(result);
   expect(genDiff(path1, path2, format)).toBe(expected);
 });
