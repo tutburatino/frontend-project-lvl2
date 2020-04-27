@@ -5,10 +5,10 @@ const renderPlain = (difference, parents = []) => {
   const normalize = elem => (isObject(elem) ? '[complex value]' : elem);
 
   const items = difference.map(({
-    name, type, value, oldValue, children,
+    name, type, oldValue, newValue, children,
   }) => {
     if (type === 'added') {
-      return `Property '${[...parents, name].join('.')}' was added with value: ${normalize(value)}`;
+      return `Property '${[...parents, name].join('.')}' was added with value: ${normalize(newValue)}`;
     }
     if (type === 'deleted') {
       return `Property '${[...parents, name].join('.')}' was removed`;
@@ -17,7 +17,7 @@ const renderPlain = (difference, parents = []) => {
       return `${renderPlain(children, [...parents, name])}`;
     }
     if (type === 'changed') {
-      return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(value)}`;
+      return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(newValue)}`;
     }
 
     return null;
