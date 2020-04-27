@@ -8,7 +8,7 @@ import render from './render';
 export default (filePath1, filePath2, format = 'tree') => {
   const ext = extname(filePath1).slice(1);
 
-  const path1 = resolve(process.env.PWD, filePath1);
+  const path1 = resolve(process.cwd(), filePath1);
   const data1 = fs.readFileSync(path1, 'utf-8');
 
   const path2 = resolve(process.cwd(), filePath2);
