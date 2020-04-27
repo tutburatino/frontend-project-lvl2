@@ -17,7 +17,6 @@ test.each([
   const path1 = getFixturePath(filename1);
   const path2 = getFixturePath(filename2);
   const expected = readFile(result);
-  console.log(`genDiff(path1, path2, format) : ${genDiff(path1, path2, format)}`)
   expect(genDiff(path1, path2, format)).toBe(expected);
 });
 
