@@ -15,11 +15,11 @@ const compare = (obj1, obj2) => {
     if (!_.has(obj2, name)) {
       return { name, type: 'deleted', oldValue };
     }
-    if (_.isEqual(newValue, oldValue)) {
-      return { name, type: 'unchanged', newValue };
-    }
     if (_.isObject(newValue) && _.isObject(oldValue)) {
       return { name, type: 'parent', children: compare(oldValue, newValue) };
+    }
+    if (_.isEqual(newValue, oldValue)) {
+      return { name, type: 'unchanged', newValue };
     }
     return {
       name, type: 'changed', oldValue, newValue,
