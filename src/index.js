@@ -2,7 +2,7 @@ import { extname, resolve } from 'path';
 import fs from 'fs';
 import parse from './parse';
 import compare from './compare';
-import render from './render';
+import { render } from './formatters';
 
 
 export default (filePath1, filePath2, format = 'tree') => {

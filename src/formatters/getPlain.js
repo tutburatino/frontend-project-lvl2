@@ -7,20 +7,22 @@ const renderPlain = (difference, parents = []) => {
   const items = difference.map(({
     name, type, oldValue, newValue, children,
   }) => {
-    if (type === 'added') {
-      return `Property '${[...parents, name].join('.')}' was added with value: ${normalize(newValue)}`;
-    }
-    if (type === 'deleted') {
-      return `Property '${[...parents, name].join('.')}' was removed`;
-    }
-    if (type === 'parent') {
-      return `${renderPlain(children, [...parents, name])}`;
-    }
-    if (type === 'changed') {
-      return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(newValue)}`;
-    }
+    switch (type) {
+      case 'added':
+        return `Property '${[...parents, name].join('.')}' was added with value: ${normalize(newValue)}`;
 
-    return null;
+      case 'deleted':
+        return `Property '${[...parents, name].join('.')}' was removed`;
+
+      case 'parent':
+        return `${renderPlain(children, [...parents, name])}`;
+
+      case 'changed':
+        return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(newValue)}`;
+
+      default:
+        return null;
+    }
   });
 
   return items.filter(i => i).join('\n');
