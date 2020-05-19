@@ -1,15 +1,15 @@
 import { isObject } from 'lodash/fp';
 
 
-const renderPlain = (difference, parents = []) => {
-  const normalize = elem => (isObject(elem) ? '[complex value]' : elem);
+const stringify = elem => (isObject(elem) ? '[complex value]' : elem);
 
+const renderPlain = (difference, parents = []) => {
   const items = difference.map(({
     name, type, oldValue, newValue, children,
   }) => {
     switch (type) {
       case 'added':
-        return `Property '${[...parents, name].join('.')}' was added with value: ${normalize(newValue)}`;
+        return `Property '${[...parents, name].join('.')}' was added with value: ${stringify(newValue)}`;
 
       case 'deleted':
         return `Property '${[...parents, name].join('.')}' was removed`;
@@ -18,7 +18,7 @@ const renderPlain = (difference, parents = []) => {
         return `${renderPlain(children, [...parents, name])}`;
 
       case 'changed':
-        return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(newValue)}`;
+        return `Property '${[...parents, name].join('.')}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
 
       case 'unchanged':
         return false;
