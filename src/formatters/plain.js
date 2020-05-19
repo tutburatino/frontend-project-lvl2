@@ -20,8 +20,11 @@ const renderPlain = (difference, parents = []) => {
       case 'changed':
         return `Property '${[...parents, name].join('.')}' was updated. From ${normalize(oldValue)} to ${normalize(newValue)}`;
 
+      case 'unchanged':
+        return false;
+
       default:
-        return null;
+        throw new Error(`Unknown type: ${type}`);
     }
   });
 
