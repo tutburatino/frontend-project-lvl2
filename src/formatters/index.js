@@ -7,10 +7,4 @@ const formatters = {
   json: JSON.stringify,
 };
 
-const render = (difference, format = 'tree') => formatters[format](difference);
-
-export {
-  getPlain,
-  getTree,
-  render,
-};
+export default (difference, format = 'tree') => formatters[format](difference);
