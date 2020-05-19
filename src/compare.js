@@ -1,4 +1,3 @@
-// eslint-disable-next-line lodash-fp/use-fp
 import _ from 'lodash';
 
 
