@@ -36,9 +36,12 @@ const renderTree = (difference, depth = 0) => {
       case 'unchanged':
         return `${indent}    ${name}: ${stringify(newValue, depth + 1)}`;
 
-      default:
+      case 'changed':
         return `${indent}  + ${name}: ${stringify(newValue, depth + 1)}\n`
              + `${indent}  - ${name}: ${stringify(oldValue, depth + 1)}`;
+
+      default:
+        throw new Error(`Unknown type: ${type}`);
     }
   });
 
