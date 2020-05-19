@@ -1,5 +1,5 @@
-import getTree from './getTree';
-import getPlain from './getPlain';
+import getTree from './tree';
+import getPlain from './plain';
 
 const formatters = {
   tree: getTree,
