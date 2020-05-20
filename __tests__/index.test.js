@@ -3,8 +3,8 @@ import fs from 'fs';
 import genDiff from '../src';
 
 
-const getFixturePath = filename => join(__dirname, '__fixtures__', filename);
-const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8');
+const getFixturePath = (filename) => join(__dirname, '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 
 test.each([

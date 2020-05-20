@@ -1,7 +1,7 @@
 import { isObject } from 'lodash/fp';
 
 
-const stringify = elem => (isObject(elem) ? '[complex value]' : elem);
+const stringify = (elem) => (isObject(elem) ? '[complex value]' : elem);
 
 const renderPlain = (difference, parents = []) => {
   const items = difference.map(({
@@ -28,7 +28,7 @@ const renderPlain = (difference, parents = []) => {
     }
   });
 
-  return items.filter(i => i).join('\n');
+  return items.filter((i) => i).join('\n');
 };
 
 export default renderPlain;

@@ -12,4 +12,4 @@ program
     console.log(genDiff(firstConfig, secondConfig, cmdObj.format));
   });
 
-export default args => program.parse(args);
+export default (args) => program.parse(args);
